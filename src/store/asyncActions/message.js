@@ -1,7 +1,9 @@
-import {addMessageAction, ADD_MESSAGE} from '../messageReducer'
+import {addMessageAction, ADD_MESSAGE, getMessageAction} from '../messageReducer'
 import { useMutation } from '@apollo/client'
+import { SEND_MESSAGE } from '../../query/message'
 
-export const sendMessage = (message) => {
+
+export const SendMessageOnServer = (message) => {
   const [newMessage] = useMutation(SEND_MESSAGE)
   return (dispatch) => {
     newMessage({
@@ -10,6 +12,6 @@ export const sendMessage = (message) => {
           post: message
         }
       }
-    }).then(res => res.json()).then(json => dispatch(addMessageAction(json)))
+    }).then(res => res.json()).then(json => dispatch(getMessageAction(json)))
   }
 }

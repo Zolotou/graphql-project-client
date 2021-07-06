@@ -11,7 +11,7 @@ export const messageReducer = (state = initialState, action) => {
       case ADD_MESSAGE:
         return {...state, message: state.message + action.payload, update: !state.update}
       case GET_MESSAGE:
-        return {...state, message: state.message -1}
+        return {...state, message: action.payload}
     default:
       return state
   }

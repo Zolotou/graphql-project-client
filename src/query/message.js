@@ -21,3 +21,18 @@ export const SEND_MESSAGE = gql`
     }
 
 `
+
+
+export const DELETE_MESSAGE = gql`
+    mutation deleteMessage($input: DeleteMessageInput) {
+      deleteMessage(input: $input){
+        id
+        post
+        success{
+          id
+          username
+        }
+      }
+    }
+
+`

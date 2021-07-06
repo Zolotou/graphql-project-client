@@ -9,6 +9,7 @@ import { useMutation } from '@apollo/client'
 import { CREATE_USER, GET_ALL_USERS, GET_ONE_USER } from '../query/user'
 import { SEND_MESSAGE } from '../query/message'
 
+
 const ControlPanel = props => {
   const {data: dataOne} = useQuery(GET_ONE_USER, {
     variables: {
@@ -22,7 +23,8 @@ const ControlPanel = props => {
 
   const [message, setMessage] = useState("")
   const SendMessage = () => {
-    
+    if(message.length == 0) return;
+
     newMessage({
       variables: {
         input: {
@@ -37,7 +39,6 @@ const ControlPanel = props => {
   
   return (
     <div className="Control-wrapper">
-      <p style={{color : "black"}} >{stateMessage}</p>
       <TextField value={message} onChange={(e) => setMessage(e.target.value)} id="standard-basic" label="message"/>
       <Button variant="contained" color="primary" onClick={() => SendMessage()} >Send</Button>
       <Button variant="contained" onClick={() => dispatch(fetchUsers())}>Get USERS</Button>

@@ -46,3 +46,9 @@
   border-radius: 10px;
   background-color: white;
 }
+
+.ListOfMessages{
+  width: 90%;
+  max-height: 60vh;
+  overflow-y: auto
+}
